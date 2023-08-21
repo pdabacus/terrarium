@@ -1,0 +1,33 @@
+2022-07-06 02:36:35: terrarium DEBUG: starting log
+2022-07-06 02:36:35: terrarium INFO: values.light_on default 1
+2022-07-06 02:36:35: terrarium INFO: values.light_pin default 14
+2022-07-06 02:36:35: terrarium INFO: values.light_time (60s): [([00:00, 06:00), 1), ([06:00, 18:00), 0), ([18:00, 24:00), 1)]
+2022-07-06 02:36:35: terrarium INFO: values.soil_dry default 0
+2022-07-06 02:36:35: terrarium INFO: values.soil_sensor (300s): gpio pin 14
+2022-07-06 02:36:35: terrarium INFO: controls.light_switch initialized
+2022-07-06 02:36:35: terrarium DEBUG: initialized values state and controls config
+2022-07-06 02:36:35: terrarium INFO: values.light_on updated 1 -> 0
+2022-07-06 02:36:35: terrarium INFO: values.light_time: 2:36:35
+2022-07-06 02:36:36: terrarium INFO: values.soil_sensor: samples [0.387703, 0.405811, 0.401338], mean 0.398284, std 0.007702
+2022-07-06 02:37:07: terrarium DEBUG: starting log
+2022-07-06 02:37:07: terrarium INFO: values.light_on default 1
+2022-07-06 02:37:07: terrarium INFO: values.light_pin default 14
+2022-07-06 02:37:07: terrarium INFO: values.light_time (60s): [([00:00, 06:00), 1), ([06:00, 18:00), 0), ([18:00, 24:00), 1)]
+2022-07-06 02:37:07: terrarium INFO: values.soil_dry default 0
+2022-07-06 02:37:07: terrarium INFO: values.soil_sensor (300s): gpio pin 14
+2022-07-06 02:37:07: terrarium INFO: controls.light_switch initialized
+2022-07-06 02:37:07: terrarium DEBUG: initialized values state and controls config
+2022-07-06 02:37:07: terrarium INFO: values.light_on updated 1 -> 0
+2022-07-06 02:37:07: terrarium INFO: values.light_time: 2:37:7
+2022-07-06 02:37:08: terrarium INFO: values.soil_sensor: samples [0.402438, 0.386968, 0.399251], mean 0.396219, std 0.006670
+2022-07-06 02:37:25: terrarium DEBUG: starting log
+2022-07-06 02:37:25: terrarium INFO: values.light_on default 1
+2022-07-06 02:37:25: terrarium INFO: values.light_pin default 14
+2022-07-06 02:37:25: terrarium INFO: values.light_time (60s): [([00:00, 06:00), 1), ([06:00, 18:00), 0), ([18:00, 24:00), 1)]
+2022-07-06 02:37:25: terrarium INFO: values.soil_dry default 0
+2022-07-06 02:37:25: terrarium INFO: values.soil_sensor (300s): gpio pin 14
+2022-07-06 02:37:25: terrarium INFO: controls.light_switch initialized
+2022-07-06 02:37:25: terrarium DEBUG: initialized values state and controls config
+2022-07-06 02:37:25: terrarium INFO: values.light_on updated 1 -> 0
+2022-07-06 02:37:25: terrarium INFO: values.light_time: 2:37:25
+2022-07-06 02:37:26: terrarium INFO: values.soil_sensor: samples [0.38378, 0.378997, 0.418972], mean 0.393917, std 0.017824

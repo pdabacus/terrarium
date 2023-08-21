@@ -1,0 +1,71 @@
+{
+    "values": [
+        {
+            "name": "light_on",
+            "type": "variable",
+            "default": 1
+        },
+        {
+            "name": "light_pin",
+            "type": "variable",
+            "default": 14
+        },
+        {
+            "name": "light_time",
+            "type": "indicator",
+            "period": 60,
+            "trigger": {
+                "type": "time",
+                "timeformat": "%H:%M",
+                "ranges": [
+                    {"a": "00:00", "b": "06:00", "value": 1},
+                    {"a": "06:00", "b": "18:00", "value": 0},
+                    {"a": "18:00", "b": "24:00", "value": 1}
+                ]
+            }
+        },
+        {
+            "name": "soil_dry",
+            "type": "variable",
+            "default": 0
+        },
+        {
+            "name": "soil_sensor",
+            "type": "indicator",
+            "period": 300,
+            "trigger": {
+                "type": "gpio",
+                "pin": 14,
+                "samples": 3,
+                "sample_dt": 0.5,
+                "ranges": [
+                    {"a": 0.0, "b": 1.0, "value": 1},
+                    {"a": 1.0, "b": 9.0, "value": 0}
+                ]
+            }
+        }
+    ],
+
+    "controls": [
+        {
+            "name": "light_switch",
+            "setup": {
+                "type": "pins",
+                "pins": ["values.light_pin"]
+            },
+            "conditions": {
+                "values.light_time": [
+                    "values.light_on = 1",
+                    "controls.light_switch.pins[0].on()"
+                ],
+                "not values.light_time": [
+                    "values.light_on = 0",
+                    "controls.light_switch.pins[0].off()"
+                ]
+            }
+        },
+        {
+            "name": "pump_water"
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+# Terrarium Automation Config
+
+## Methodology
+* use the values section of the config to describe the current state/model of
+  the terrarium and how changes in time or sensors readings update the model
+* use the control section of the config to describe what actions need to be
+  done when the model changes, triggering new events like turning off a light
+  switch or watering a plant
+
+---
+
+## Values
+* config.json specifies variables and indicators
+* variable `values.x` is specified with `{"name":"x", "type":"variable"}`
+* indicator `values.fn` is specified with `{"name":"fn", "type":"indicator"}`
+
+### Variables
+* modifiable, defined like `{"name":"varX", "type":"variable", "default":3.14}`
+* can be referenced in any part of the controls section using `values.varX`
+* changes to the variable state are logged in `log.txt`
+
+### Indicators
+* triggered by time or gpio: is a function that is called periodically and
+  returns just a single value True/False when called
+* setting the period in seconds for how often to check the indicator
+* ex. `{"name":"light_clock", "type":"indicator", "period":60, "trigger": ...}`
+* set the `ranges` inside the `trigger` for how measured values correspond to
+  what the current state should be `"ranges": [{"a":-5, "b":5, "value":1}, ...]`
+
+#### Time
+* time trigger `"trigger": {"type":"time", "time_format":"HH:MM", ...}`
+
+#### GPIO
+* gpio trigger `"trigger": {"type":"gpio", "samples":5, "pin":14}`
+* set the number of samples and sample_dt for how many measurements to do to
+  compute the mean and std for logging and for actionable items
+
+
+---
+
+## Controls
+* uses the conditions to perform actions only when the evaluation of the
+  condition changes
+* can be used to change variable state, turn pins on and off, run python code
+* ex. `{"name":"water_plant1", "conditions":{"x==1":["st1","st2"], "x==2":...}}`
+
+### Setup
+* if pin(s) are set to input/output mode in the setup clause then those pin(s)
+  will be accessible in the code using `controls.water_plant1.pins[0].on()`
+* note the pin can be dynamic if a variable value is used to define the pin num
+
