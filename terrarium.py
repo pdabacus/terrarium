@@ -23,14 +23,35 @@ logger.debug("starting log")
 
 
 class Value():
+    """
+    abstract interface for a value/piece of state that can be accessed/modified
+    """
     def __init__(self, name):
         self.name = name
     def getx(self):
-        return 0
+        pass
     def setx(self, newx):
-        return 0
+        pass
+
+class ConstantValue(Value):
+    """
+    ConstantValue("light_pin", 14)
+    print(values.light_pin)
+    """
+    def __init__(self, name, x):
+        self.name = name
+        self._x = x
+    def getx(self):
+        return self._x
+    def setx(self, newx):
+        logger.error("cant change value for constant %s" % self.name)
+        raise ValueError("cant modify %s constant" % self.name)
 
 class VariableValue(Value):
+    """
+    VariableValue("camera_on", True)
+    values.camera_on = False
+    """
     def __init__(self, name, x):
         super().__init__(name)
         self._x = x
@@ -42,10 +63,17 @@ class VariableValue(Value):
         return self._x
 
 class IndicatorValue(Value):
+    """
+    # every 5s, value is set using the provided function
+    IndicatorValue("voltage", 5, lambda: 3.3)
+    if values.voltage > 2.0:
+        print("triggered")
+    """
     def __init__(self, name, period, getval):
         super().__init__(name)
         self.period = period
         self._getter = getval
+    #TODO configure auto period checking, history, and triggers
     def getx(self):
         return self._getter()
     def setx(self, newx):
@@ -53,7 +81,23 @@ class IndicatorValue(Value):
         return self._getter()
 
 class TimeIndicatorValue(IndicatorValue):
-    def __init__(self, name, period, trigger):
+    """
+    # value set using time ranges intervals
+    TimeIndicatorValue(
+        "sunny",
+        {
+            "timeformat": "%H:%M",
+                "ranges": [
+                    {"a": "00:00", "b": "06:00", "value": 1},
+                    {"a": "06:00", "b": "18:00", "value": 0},
+                    {"a": "18:00", "b": "24:00", "value": 1}
+                ]
+        {
+    )
+    if values.sunny:
+        print("triggered")
+    """
+    def __init__(self, name, trigger):
         self.timeformat = trigger["timeformat"]
         self.parse_values = {
             "H": 3600,
@@ -90,7 +134,7 @@ class TimeIndicatorValue(IndicatorValue):
             logger.error(
                 "couldn't find time %s in ranges for values.%s" % (now, name)
             )
-        super().__init__(name, period, getval)
+        super().__init__(name, float("inf"), getval)
     def _parse_time(self, time):
         parsefmt = self.timeformat
         encountered_times = dict((x,0) for x in self.parse_values)
@@ -190,27 +234,33 @@ def parse_config(config_path):
     with open(config_path, "r") as file:
         config = json.load(file)
     variables = list()
+    constants = list()
     indicators = list()
     for value in config["values"]:
         value_type = value["type"].lower().strip()
         if "var" in value_type:
             var_name = value["name"]
-            var_default = value["default"]
-            logger.info("values.%s default %s" % (var_name, var_default))
-            variables.append(VariableValue(var_name, var_default))
+            var_init = value["init"]
+            logger.info("values.%s init default %s" % (var_name, var_init))
+            variables.append(VariableValue(var_name, var_init))
+        elif "con" in value_type:
+            const_name = value["name"]
+            const_val = value["value"]
+            logger.info("values.%s constant %s" % (const_name, const_val))
+            constants.append(ConstantValue(const_name, const_val))
         elif "ind" in value_type:
             ind_name = value["name"]
-            ind_period = value["period"]
             ind_trigger = value["trigger"]
             trigger_type = ind_trigger["type"].lower().strip()
             if "tim" in trigger_type:
-                ind = TimeIndicatorValue(ind_name, ind_period, ind_trigger)
+                ind = TimeIndicatorValue(ind_name, ind_trigger)
                 logger.info(
                     "values.%s (%ss): %s" % (ind_name, ind_period, ind.ranges)
                 )
                 indicators.append(ind)
             elif "gpio" in trigger_type:
                 pin = ind_trigger["pin"]
+                ind_period = ind_trigger["period"]
                 logger.info(
                     "values.%s (%ss): gpio pin %s" % (ind_name, ind_period, pin)
                 )
@@ -218,10 +268,11 @@ def parse_config(config_path):
                     GPIOIndicatorValue(ind_name, ind_period, ind_trigger)
                 )
             else:
+                #TODO implement basic indicator using period and eval() string
                 logger.error("invalid config trigger type %s" % trigger_type)
         else:
             logger.error("invalid config value type %s unknown" % value["type"])
-    values = Values(variables + indicators)
+    values = Values(variables + constants + indicators)
     control_list = list()
     for control in config["controls"]:
         ctl_name = control["name"]

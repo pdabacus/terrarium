@@ -31,3 +31,63 @@
 2022-07-06 02:37:25: terrarium INFO: values.light_on updated 1 -> 0
 2022-07-06 02:37:25: terrarium INFO: values.light_time: 2:37:25
 2022-07-06 02:37:26: terrarium INFO: values.soil_sensor: samples [0.38378, 0.378997, 0.418972], mean 0.393917, std 0.017824
+2023-08-21 03:54:52: terrarium DEBUG: starting log
+2023-08-21 03:54:52: terrarium INFO: values.light_on default 1
+2023-08-21 03:54:52: terrarium INFO: values.light_pin default 14
+2023-08-21 03:54:52: terrarium INFO: values.light_time (60s): [([00:00, 06:00), 1), ([06:00, 18:00), 0), ([18:00, 24:00), 1)]
+2023-08-21 03:54:52: terrarium INFO: values.soil_dry default 0
+2023-08-21 03:54:52: terrarium INFO: values.soil_sensor (300s): gpio pin 14
+2023-08-21 03:54:52: terrarium INFO: controls.light_switch initialized
+2023-08-21 03:54:52: terrarium DEBUG: initialized values state and controls config
+2023-08-21 03:54:52: terrarium INFO: values.light_on updated 1 -> 0
+2023-08-21 03:54:52: terrarium INFO: values.light_time: 3:54:52
+2023-08-21 03:54:53: terrarium INFO: values.soil_sensor: samples [0.392695, 0.414169, 0.403807], mean 0.403557, std 0.008769
+2023-08-21 04:46:09: terrarium DEBUG: starting log
+2023-08-21 04:46:30: terrarium DEBUG: starting log
+2023-08-21 04:48:25: terrarium DEBUG: starting log
+2023-08-21 04:48:38: terrarium DEBUG: starting log
+2023-08-21 04:48:46: terrarium DEBUG: starting log
+2023-08-21 04:50:22: terrarium DEBUG: starting log
+2023-08-21 04:50:49: terrarium DEBUG: starting log
+2023-08-21 04:50:56: terrarium DEBUG: starting log
+2023-08-21 04:52:03: terrarium DEBUG: starting log
+2023-08-21 04:52:27: terrarium DEBUG: starting log
+2023-08-21 04:56:45: terrarium DEBUG: starting log
+2023-08-21 04:59:12: terrarium DEBUG: starting log
+2023-08-21 04:59:59: terrarium DEBUG: starting log
+2023-08-21 04:59:59: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:00:39: terrarium DEBUG: starting log
+2023-08-21 05:00:39: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:01:08: terrarium DEBUG: starting log
+2023-08-21 05:01:08: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:01:54: terrarium DEBUG: starting log
+2023-08-21 05:01:54: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:02:59: terrarium DEBUG: starting log
+2023-08-21 05:03:00: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:03:16: terrarium DEBUG: starting log
+2023-08-21 05:03:17: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:04:52: terrarium DEBUG: starting log
+2023-08-21 05:04:52: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:05:39: terrarium DEBUG: starting log
+2023-08-21 05:05:39: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:06:52: terrarium DEBUG: starting log
+2023-08-21 05:06:52: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:07:20: terrarium DEBUG: starting log
+2023-08-21 05:07:20: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:12:35: terrarium DEBUG: starting log
+2023-08-21 05:12:35: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:12:35: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:12:35: terrarium INFO: values.e updated 2 -> 2.25
+2023-08-21 05:13:04: terrarium DEBUG: starting log
+2023-08-21 05:13:04: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:13:04: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:13:04: terrarium INFO: values.e updated 2 -> 2.25
+2023-08-21 05:25:16: terrarium DEBUG: starting log
+2023-08-21 05:25:16: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:25:16: terrarium INFO: values.e updated 2 -> 2.25
+2023-08-21 05:25:29: terrarium DEBUG: starting log
+2023-08-21 05:25:30: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:25:30: terrarium INFO: values.e updated 2 -> 2.25
+2023-08-21 05:25:55: terrarium DEBUG: starting log
+2023-08-21 05:25:55: terrarium ERROR: cant change value for constant pi
+2023-08-21 05:25:55: terrarium INFO: values.e updated 2 -> 2.25

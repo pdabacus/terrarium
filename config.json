@@ -3,17 +3,16 @@
         {
             "name": "light_on",
             "type": "variable",
-            "default": 1
+            "init": 1
         },
         {
             "name": "light_pin",
-            "type": "variable",
-            "default": 14
+            "type": "constant",
+            "value": 14
         },
         {
             "name": "light_time",
             "type": "indicator",
-            "period": 60,
             "trigger": {
                 "type": "time",
                 "timeformat": "%H:%M",
@@ -32,9 +31,9 @@
         {
             "name": "soil_sensor",
             "type": "indicator",
-            "period": 300,
             "trigger": {
                 "type": "gpio",
+                "period": 300,
                 "pin": 14,
                 "samples": 3,
                 "sample_dt": 0.5,
